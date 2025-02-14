@@ -1,8 +1,8 @@
 import { Module } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
-import { Todo } from './todo/todo.entity';
-import { TodosController } from './todos/todos.controller';
-import { TodosService } from './todos/todos.service';
+import { BlogPost } from './blog/blog.entity';
+import { BlogController } from './blogposts/blog.controller';
+import { BlogService } from './blogposts/blog.service';
 import { ConfigModule } from '@nestjs/config';
 import { AuthModule } from './auth/auth.module';
 
@@ -16,15 +16,15 @@ import { AuthModule } from './auth/auth.module';
       username: process.env.DB_USERNAME,
       password: process.env.DB_PASSWORD,
       database: process.env.DB_NAME,
-      entities: [Todo],
+      entities: [BlogPost],
       synchronize: true,
       ssl: {
         rejectUnauthorized: false }, // SSL
       }),
-    TypeOrmModule.forFeature([Todo]),
+    TypeOrmModule.forFeature([BlogPost]),
     AuthModule,
   ],
-  controllers: [TodosController],
-  providers: [TodosService],
+  controllers: [BlogController],
+  providers: [BlogController],
 })
 export class AppModule { }
