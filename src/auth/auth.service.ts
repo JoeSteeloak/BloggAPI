@@ -5,7 +5,7 @@ import { JwtService } from '@nestjs/jwt';
 export class AuthService {
     constructor(private jwtService: JwtService) { }
 
-    // Mockad användarvalidering – byt ut mot riktig databaslogik senare
+    // Hårdkodade användare
     private users = [
         { id: 1, username: 'admin', password: 'password' },
         { id: 2, username: 'user', password: '1234' },

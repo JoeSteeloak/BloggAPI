@@ -8,10 +8,10 @@ import { ConfigModule, ConfigService } from '@nestjs/config';
 
 @Module({
   imports: [
-    ConfigModule.forRoot(), // Se till att ConfigModule är laddat
+    ConfigModule.forRoot(), 
     PassportModule,
     JwtModule.registerAsync({
-      imports: [ConfigModule], // Importera ConfigModule här också
+      imports: [ConfigModule], 
       inject: [ConfigService],
       useFactory: async (configService: ConfigService) => ({
         secret: configService.get<string>('JWT_SECRET'),
@@ -21,6 +21,6 @@ import { ConfigModule, ConfigService } from '@nestjs/config';
   ],
   controllers: [AuthController],
   providers: [AuthService, JwtStrategy],
-  exports: [AuthService], // Exportera AuthService om andra moduler behöver den
+  exports: [AuthService], 
 })
 export class AuthModule {}
