@@ -1,8 +1,9 @@
-import { Controller, Get, Post, Body, Param, Put, Delete } from '@nestjs/common';
+import { Controller, Get, Post, Body, Param, Put, Delete, UseGuards } from '@nestjs/common';
 import { TodosService } from './todos.service';
 import { Todo } from '../todo/todo.entity';
 import { validate } from 'class-validator';
 import { HttpException, HttpStatus } from '@nestjs/common';
+import { JwtAuthGuard } from '../auth/jwt-auth.guard';
 
 @Controller('todos')
 export class TodosController {
@@ -25,6 +26,7 @@ export class TodosController {
     }
 
     // Skapa en ny post
+    @UseGuards(JwtAuthGuard)
     @Post()
     async create(@Body() todo: Todo): Promise<Todo> {
         // Skapa en instans av Todo och lägg till data
@@ -45,6 +47,7 @@ export class TodosController {
     }
 
     // Uppdatera en post
+    @UseGuards(JwtAuthGuard)
     @Put(':id')
     async update(@Param('id') id: number, @Body() partialTodo: Partial<Todo>): Promise<Todo> {
         const existingTodo = await this.todosService.findOne(id);
@@ -71,6 +74,7 @@ export class TodosController {
 
 
     // Ta bort en post
+    @UseGuards(JwtAuthGuard)
     @Delete(':id')
     async remove(@Param('id') id: number): Promise<void> {
         const todo = await this.todosService.findOne(id);

@@ -4,6 +4,7 @@ import { Todo } from './todo/todo.entity';
 import { TodosController } from './todos/todos.controller';
 import { TodosService } from './todos/todos.service';
 import { ConfigModule } from '@nestjs/config';
+import { AuthModule } from './auth/auth.module';
 
 @Module({
   imports: [
@@ -21,6 +22,7 @@ import { ConfigModule } from '@nestjs/config';
         rejectUnauthorized: false }, // SSL
       }),
     TypeOrmModule.forFeature([Todo]),
+    AuthModule,
   ],
   controllers: [TodosController],
   providers: [TodosService],
