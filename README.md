@@ -17,19 +17,19 @@ Detta API hanterar blogginlägg och erbjuder full CRUD-funktionalitet för att s
 Följ dessa steg för att installera och köra projektet lokalt:
 
 1. Klona repot:
-   ```
-git clone https://github.com/JoeSteeloak/MVCtest.git
-cd MVCtest
+```
+git clone https://github.com/JoeSteeloak/BloggAPI.git
+cd BloggAPI
 ```
 
 2. Installera beroenden:
-   ```
+```
 npm install
 ```
 
 3. Konfigurera databasen:  
-   Skapa en `.env`-fil i projektets rot med innehåll liknande:
-   ```
+Skapa en `.env`-fil i projektets rot med innehåll liknande:
+```
 DB_HOST=localhost
 DB_PORT=3306
 DB_USERNAME=din_db_användare
@@ -37,13 +37,13 @@ DB_PASSWORD=din_db_lösenord
 DB_NAME=moment2
 JWT_SECRET=my_super_secret_key
 ```
-   Se till att MySQL-databasen är upprättad och att uppgifterna i `.env` stämmer.
+Se till att MySQL-databasen är upprättad och att uppgifterna i `.env` stämmer.
 
 4. Starta applikationen:
-   ```
+```
 npm run start
 ```
-   Applikationen startar då på http://localhost:3000
+Applikationen startar då på http://localhost:3000
 
 ## API Endpoints
 
