@@ -7,13 +7,13 @@ export class AuthService {
 
     // Hårdkodade användare
     private users = [
-        { id: 1, username: 'admin', password: 'password' },
-        { id: 2, username: 'user', password: '1234' },
+        { id: 1, email: 'admin@admin.com', password: 'password' },
+        { id: 2, email: 'user@user.com', password: '1234' },
     ];
 
-    async validateUser(username: string, password: string): Promise<any> {
+    async validateUser(email: string, password: string): Promise<any> {
         const user = this.users.find(
-            (user) => user.username === username && user.password === password,
+            (user) => user.email === email && user.password === password,
         );
 
         if (!user) {
@@ -26,7 +26,7 @@ export class AuthService {
     }
 
     async login(user: any) {
-        const payload = { username: user.username, sub: user.id };
+        const payload = { email: user.email, sub: user.id };
         return {
             access_token: this.jwtService.sign(payload),
         };
