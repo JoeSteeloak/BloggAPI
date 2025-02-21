@@ -151,15 +151,15 @@ Exempel på felmeddelande:
 
 Du hittar koden här:  
 ```
-https://github.com/JoeSteeloak/MVCtest
+https://github.com/JoeSteeloak/BloggAPI
 ```
 
 ## Starta applikationen
 
 1. Klona repot:
    ```
-   git clone https://github.com/JoeSteeloak/MVCtest.git
-   cd MVCtest
+   git clone https://github.com/JoeSteeloak/BloggAPI.git
+   cd BloggAPI
    ```
 
 2. Installera beroenden:
