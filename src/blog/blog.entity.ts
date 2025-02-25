@@ -27,6 +27,5 @@ export class BlogPost {
     @Column({ nullable: true })
     @IsString()
     @IsOptional()
-    @Length(2, 100, { message: 'Category name must be between 2 and 100 characters long.' })
     category?: string;
 }

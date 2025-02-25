@@ -71,11 +71,18 @@ export class BlogController {
     // Ta bort ett blogginlägg
     @UseGuards(JwtAuthGuard)
     @Delete(':id')
-    async remove(@Param('id') id: number): Promise<void> {
-        const post = await this.blogService.findOne(id);
+    async remove(@Param('id') id: string): Promise<{ message: string; id: number }> { // 👈 Uppdaterad returtyp
+        const postId = Number(id); // Konvertera id till number
+
+        const post = await this.blogService.findOne(postId);
         if (!post) {
             throw new HttpException('Blog post not found', HttpStatus.NOT_FOUND);
         }
-        return this.blogService.remove(id);
+
+        await this.blogService.remove(postId);
+
+        return { message: 'Inlägg raderat', id: postId };
     }
+
+
 }
